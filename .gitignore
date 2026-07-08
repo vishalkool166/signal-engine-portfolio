@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Environment Variables
+.env
+.env.local
+*.env
+
+# Database
+*.db
+*.sqlite
+database/
+
+# Logs
+*.log
+logs/
+
+# ML Models (proprietary)
+ml/models/
+*.pkl
+*.joblib
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.override.yml
+
+# Node (root level)
+node_modules/
+
+# Frontend build
+frontend/dist/
+frontend/node_modules/
+
+# Sensitive
+*.pem
+*.key
+secrets/
+
+# Build artifacts
+frontend/frontend/
+frontend/tsconfig.app.tsbuildinfo
+frontend/tsconfig.node.tsbuildinfo
+frontend/package-lock.json
