@@ -273,5 +273,3 @@ Hyderabad, India
 [Live Demo](https://signal-engine-v5.vishalkool.top) |
 [LinkedIn](https://www.linkedin.com/in/vishal-katike-56169b97/)
 ```
-
----
