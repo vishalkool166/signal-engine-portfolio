@@ -271,4 +271,4 @@ Hyderabad, India
 
 [Resume](https://github.com/vishalkool166/signal-engine-portfolio/blob/main/RESUME.md) |
 [Live Demo](https://signal-engine-v5.vishalkool.top) |
-[LinkedIn](https://www.linkedin.com/in/vishal-katike-56169b97/)
+[LinkedIn](https://www.linkedin.com/in/vishal-katike)
