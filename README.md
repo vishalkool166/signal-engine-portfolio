@@ -1,274 +1,376 @@
 # Signal Engine v5
-### AI-Powered Crypto Futures Trading Intelligence System
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-green?style=for-the-badge)](https://signal-engine-v5.vishalkool.top)
-[![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python)](https://python.org)
-[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com)
-[![Docker](https://img.shields.io/badge/Docker-Deployed-2496ED?style=for-the-badge&logo=docker)](https://docker.com)
-[![AWS](https://img.shields.io/badge/AWS-EC2-FF9900?style=for-the-badge&logo=amazonaws)](https://aws.amazon.com)
+<div align="center">
 
-> Built entirely through **structured prompt engineering** over 2 months.
-> Zero traditional coding background. 100% production deployed.
+![Signal Engine](https://img.shields.io/badge/Signal_Engine-v5.0-00ff88?style=for-the-badge&logoColor=white)
+[![Live Demo](https://img.shields.io/badge/🔴_LIVE-signal--engine--v5.vishalkool.top-00ff88?style=for-the-badge)](https://signal-engine-v5.vishalkool.top)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+[![Docker](https://img.shields.io/badge/Docker-Deployed-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
+[![AWS](https://img.shields.io/badge/AWS-EC2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)](https://aws.amazon.com)
+[![LangChain](https://img.shields.io/badge/LangChain-0.3-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)](https://langchain.com)
+[![LangGraph](https://img.shields.io/badge/LangGraph-0.2-1C3C3C?style=for-the-badge)](https://langchain-ai.github.io/langgraph)
+[![LangSmith](https://img.shields.io/badge/LangSmith-Tracing-FF6B35?style=for-the-badge)](https://smith.langchain.com)
 
----
+**Automated crypto futures and Indian equity trading intelligence platform.**
 
-## 🔴 Live System
+*Combines multi-timeframe technical analysis, a LangGraph agent pipeline, RAG intelligence layer, and LangSmith observability — deployed live on AWS and actively iterating based on real trade results.*
 
-**Dashboard:** https://signal-engine-v5.vishalkool.top
+[🔴 Live System](https://signal-engine-v5.vishalkool.top) · [📄 Resume](https://github.com/vishalkool166/signal-engine-portfolio/blob/main/RESUME.md)
 
-The system is running 24/7 on AWS EC2, scanning 15+ crypto coins
-every 15 minutes and generating real trading signals.
-
----
-
-## What Is This?
-
-Signal Engine v5 is a fully autonomous crypto futures trading
-intelligence platform that:
-
-- **Scans** 15+ coins every 15 minutes across 4 timeframes
-- **Scores** each coin using 16 weighted confluence factors
-- **Grades** signals A+/A/B/C/F based on score out of 100
-- **Executes** trades on Binance Futures automatically
-- **Learns** from closed trades using LightGBM ML model
-- **Generates** AI-written Twitter content via Groq LLM
-- **Alerts** via Telegram bot with 30+ commands
-- **Displays** everything on real-time React dashboard
+</div>
 
 ---
 
-## Architecture
+## 🧠 What Is This?
+
+Signal Engine v5 is a **fully autonomous trading intelligence platform** running 24/7 on AWS EC2. It covers two markets:
+
+**Crypto Futures (Binance)** — Scans 37 coins every 15 minutes across multiple timeframes. Scores each opportunity using ADX trend strength, RSI momentum, and volume confirmation. Filters through a LangGraph agent pipeline before executing on Binance Futures.
+
+**Indian Equity (AngelOne)** — Trades BANKNIFTY and FINNIFTY futures using an Opening Range Breakout strategy. Monitors the 9:15–9:30 IST opening range, validates volatility conditions, and enters SHORT positions on breakdown between 11am–12pm IST.
+
+> *"Build simple. Measure real results. Add complexity only when basics are proven."*
+>
+> *Grade A signals showing 50% win rate in live trading. Grade B was removed after live data showed 13% win rate. The system actively iterates based on real results.*
+
+---
+
+## 🏗️ System Architecture
 
 ```
-Binance API (Market Data)
-        ↓
-Signal Engine (Python/FastAPI)
-        ↓
-16-Factor Confluence Scorer
-        ↓
-Grade: A+ / A / B / C / F
-        ↓
-LightGBM ML Gate (65% threshold)
-        ↓
-Trade Execution (Binance Futures)
-        ↓
-WebSocket Push → React Dashboard
-        ↓
-Telegram Alerts + Twitter Content
+┌─────────────────────────────────────────────────────────────┐
+│                    BINANCE FUTURES API                       │
+│              OHLCV · Ticker · Funding · OI                  │
+└──────────────────────────┬──────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                        REDIS LAYER                           │
+│         Real-time market data · Ticker · Funding · OI       │
+└──────────────────────────┬──────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    SIGNAL ENGINE BRAIN                       │
+│                                                              │
+│  ┌─────────────┐  ┌──────────────┐  ┌───────────────────┐  │
+│  │ Data Fetcher│  │  Indicators  │  │  Regime Detector  │  │
+│  │ Redis-first │  │ EMA·RSI·ADX  │  │ Trend·Range·Chop  │  │
+│  └──────┬──────┘  └──────┬───────┘  └─────────┬─────────┘  │
+│         └────────────────┼──────────────────────┘           │
+│                          ▼                                   │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │              LANGGRAPH AGENT PIPELINE                 │  │
+│  │  regime → trend → risk → grade → sizing → finalize   │  │
+│  │  Each step is a node. Each decision is traced.        │  │
+│  └───────────────────────┬───────────────────────────────┘  │
+│                          ▼                                   │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │         ADX + RSI + VOLUME CONFLUENCE SCORER          │  │
+│  │         Grade A+ · A · F                              │  │
+│  └───────────────────────┬───────────────────────────────┘  │
+│                          ▼                                   │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │         LIGHTGBM ML GATE (after 50 trades)            │  │
+│  └───────────────────────┬───────────────────────────────┘  │
+└──────────────────────────┼──────────────────────────────────┘
+                           │
+           ┌───────────────┼───────────────┐
+           ▼               ▼               ▼
+┌──────────────┐  ┌────────────────┐  ┌──────────────────┐
+│   BINANCE    │  │    TELEGRAM    │  │  INDIAN MARKET   │
+│   FUTURES    │  │   BOT ALERTS  │  │  BANKNIFTY/FINNIFTY│
+│  EXECUTION   │  │  30+ Commands  │  │  ORB STRATEGY    │
+└──────────────┘  └────────────────┘  └──────────────────┘
+           │
+           ▼
+┌─────────────────────────────────────────────────────────────┐
+│              RAG INTELLIGENCE LAYER                          │
+│  ChromaDB · sentence-transformers · LangChain · Groq LLM    │
+│  5 chunk types · Semantic search · Source attribution        │
+└─────────────────────────────────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────────────────────────────────┐
+│            LANGSMITH OBSERVABILITY                           │
+│  Every LangGraph execution · Every RAG query · Latency      │
+└─────────────────────────────────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   REACT DASHBOARD (PWA)                      │
+│         WebSocket push · Real-time PnL · Signal Radar        │
+│    RAG Chat Widget · LangSmith Link · Multi-tier SaaS        │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Signal Grading System
+## 📊 Signal Scoring — Current Engine
+
+The scoring engine is intentionally simple. After live trading showed that complex scoring did not outperform basic scoring, the system was stripped back to three proven factors. Complexity will be added back once the baseline is validated.
+
+### Scoring Factors
+
+| Factor | Max Points | What It Checks |
+|--------|-----------|----------------|
+| **ADX Strength** | 40 | Trend strength — is the market actually trending? |
+| **RSI Context** | 30 | Momentum alignment — is RSI confirming direction? |
+| **Volume Expansion** | 30 | Institutional participation — is volume above average? |
+| **Total** | 100 | |
+
+### Grade Thresholds
 
 | Grade | Score | Action |
 |-------|-------|--------|
-| A+ | 85-100 | Auto execute — highest confidence |
-| A | 68-84 | Auto execute — high confidence |
-| B | 52-67 | Paper mode only — data collection |
-| C | 38-51 | Watch only — setup building |
-| F | 0-37 | Hard blocked — no trade |
+| 🏆 **A+** | 80–100 | Auto-execute |
+| ✅ **A** | 65–79 | Auto-execute |
+| 🚫 **B** | 50–64 | Removed — 13% WR in live data |
+| 🚫 **F** | 0–49 | Hard blocked |
+
+### Live Results
+
+```
+Grade A  → 6 trades · 50% win rate · +$53.19 ✅
+Grade B  → 15 trades · 13% win rate · -$122.16 ❌ (removed)
+Decision → Only A+ and A grades execute
+```
 
 ---
 
-## 16 Confluence Factors
+## 🕸️ LangGraph Agent Pipeline
 
-| Factor | Weight | What It Checks |
-|--------|--------|----------------|
-| Liquidity Sweep | 12 | Stop hunt at key level |
-| Retest Confirmation | 12 | Price returned to zone |
-| Displacement | 11 | Impulsive institutional move |
-| Market Regime | 10 | Trending/ranging/choppy |
-| Weekly Filter | 10 | Weekly + daily alignment |
-| Market Structure | 9 | BOS/CHoCH bias |
-| Session Timing | 8 | London/NY quality |
-| BTC Alignment | 8 | BTC trend confirmation |
-| OI Behavior | 7 | Open interest direction |
-| Volume Expansion | 7 | Volume above average |
-| Funding Rate | 6 | Squeeze risk filter |
-| RSI Divergence | 4 | Hidden/regular divergence |
-| Order Blocks | 4 | ICT OB zone proximity |
-| ATR Volatility | 3 | Tradeable range check |
-| RSI Context | 2 | Not overbought/oversold |
-| MACD Histogram | 1 | Momentum confirmation |
+Every signal passes through a stateful LangGraph agent before execution.
 
----
+```
+START
+  ↓
+[regime_node]   — Detect market regime (trending/ranging/choppy/volatile)
+  ↓ volatile → REJECT
+[trend_node]    — Check EMA direction and ADX threshold
+  ↓ neutral  → REJECT
+[risk_node]     — Calculate SL/TP from swing levels + ATR buffer
+  ↓ invalid  → REJECT
+[grade_node]    — Score ADX + RSI + Volume → assign grade
+  ↓ grade F  → REJECT
+[sizing_node]   — Calculate position size with dynamic risk
+  ↓ skip     → REJECT
+[finalize]      — Build signal dict and write to Redis
+  ↓
+EXECUTE
+```
 
-## ML Gate
-
-After 100 closed trades, LightGBM classifier activates:
-
-- Trains on all 16 factor scores + regime + session + direction
-- Predicts win probability for every new signal
-- Signals below **65% probability** are filtered out
-- Auto-retrains every 50 new trades
-- Gets smarter over time
+Every node decision is logged and traceable through LangSmith at smith.langchain.com.
 
 ---
 
-## Tech Stack
+## 🇮🇳 Indian Market — ORB Strategy
+
+A completely separate strategy running alongside the crypto engine via AngelOne SmartAPI.
+
+```
+9:15 IST  — Market opens
+9:15–9:30 — Opening Range forms (first 15-minute candle)
+9:30      — ORB levels locked (High and Low)
+
+Validation:
+  ORB size between 200–350 points
+  Pre-session range > 300 pts OR prev day range > 600 pts
+  Not week 3 of month (expiry week — skipped)
+
+11:00–12:00 IST — Entry window
+  Price breaks below ORB Low → SHORT entry
+  Entry buffer: 10 points below breakdown
+
+Risk:
+  SL = ORB size × 0.3 (above entry)
+  TP = ORB size × 1.0 (below entry)
+  Time exit at 2:30 PM IST regardless
+```
+
+---
+
+## 🤖 RAG Intelligence Layer
+
+A full Retrieval-Augmented Generation pipeline that gives the AI assistant access to actual trading history.
+
+```
+User asks: "Why do my signals fail on Fridays?"
+                    │
+                    ▼
+         Embed question as vector
+                    │
+                    ▼
+    Search ChromaDB across 5 collections
+                    │
+                    ▼
+    Retrieve most relevant chunks
+    (semantic search — not keyword matching)
+                    │
+                    ▼
+    Send retrieved context to Groq LLM
+                    │
+                    ▼
+    Answer grounded in actual trade data
+    with source attribution
+```
+
+### 5 Chunk Types
+
+| Chunk Type | Source | Good For |
+|------------|--------|----------|
+| Trade chunks | trades table | Loss analysis, pattern finding |
+| Signal chunks | signals table | Signal quality questions |
+| Daily summaries | trades grouped by day | Period performance |
+| Coin performance | trades grouped by coin | Coin-specific analysis |
+| Documentation | README + WORKING.md | Concept explanations |
+
+---
+
+## 🔭 LangSmith Observability
+
+Every AI operation is traced through LangSmith.
+
+```
+Traces:
+  LangGraph agent executions — every node, every rejection reason
+  RAG queries — question, retrieved docs, similarity scores, LLM response
+  LangChain calls — inputs, outputs, token usage, latency, errors
+```
+
+Dashboard: `https://smith.langchain.com`
+
+---
+
+## 🛠️ Tech Stack
 
 ### Backend
-- **Python 3.11** — Core language
-- **FastAPI** — REST API + WebSocket server
-- **Redis** — Real-time data layer
-- **SQLite** — Signal and trade storage
-- **LightGBM** — ML signal filtering
-- **APScheduler** — 15-minute scan jobs
-- **CCXT** — Binance Futures integration
+| Layer | Technology |
+|-------|-----------|
+| Language | Python 3.11+ |
+| API | FastAPI + Uvicorn |
+| Cache | Redis 7 |
+| Database | SQLite + SQLAlchemy |
+| Exchange (Crypto) | Binance Futures via CCXT |
+| Exchange (Indian) | AngelOne SmartAPI |
+| Scheduling | APScheduler |
+| Indicators | TA-Lib, Pandas, NumPy |
+| ML | LightGBM + scikit-learn |
+| RAG | LangChain + ChromaDB |
+| Embeddings | sentence-transformers (local CPU) |
+| Agents | LangGraph |
+| Observability | LangSmith |
+| Alerts | Telegram Bot API |
+| LLM | Groq llama-3.3-70b |
+| Auth | PyOTP + bcrypt + JWT + Google OAuth |
 
 ### Frontend
-- **React 18** + **TypeScript** — UI framework
-- **Vite** — Build tool
-- **TailwindCSS** — Styling
-- **Framer Motion** — Animations
-- **TanStack Query** — Data fetching
-- **Recharts** — Charts and graphs
-- **Zustand** — State management
-- **Radix UI** — Component library
+| Layer | Technology |
+|-------|-----------|
+| Framework | React 18 + TypeScript |
+| Build | Vite + PWA |
+| Styling | TailwindCSS |
+| Animation | Framer Motion |
+| Data | TanStack Query |
+| State | Zustand |
+| Charts | Recharts |
+| Components | Radix UI |
 
 ### Infrastructure
-- **AWS EC2** — t3.small server
-- **Docker + Docker Compose** — Containerization
-- **Nginx** — Reverse proxy + SSL
-- **Let's Encrypt** — SSL certificate
-
-### Integrations
-- **Binance Futures API** — Market data + trade execution
-- **Telegram Bot API** — 30+ command alerts
-- **Groq LLM** (llama-3.3-70b) — AI content generation
-- **Twitter/X API** — Auto post signals
-- **Google OAuth** — Authentication
+| Layer | Technology |
+|-------|-----------|
+| Server | AWS EC2 t3.small |
+| Containers | Docker + Compose |
+| Proxy | Nginx + SSL |
 
 ---
 
-## SaaS Tier System
-
-| Feature | Free | Pro | Elite | Admin |
-|---------|------|-----|-------|-------|
-| Signal delay | 30 min | Live | Live | Live |
-| Entry/SL/TP levels | ❌ | ✅ | ✅ | ✅ |
-| ML probability | ❌ | ❌ | ✅ | ✅ |
-| Confluence factors | ❌ | ❌ | ✅ | ✅ |
-| API key access | ❌ | ❌ | ✅ | ✅ |
-| Backtest access | ❌ | ❌ | ✅ | ✅ |
-
----
-
-## Key Features
-
-### Real-Time Dashboard
-- WebSocket push updates every 2 seconds
-- Live signal radar with all coins
-- Open positions with live PnL
-- Equity curve and performance charts
-- Mobile responsive PWA
-
-### Telegram Bot (30+ Commands)
-```
-/scan     — Trigger manual scan
-/queue    — Best signals right now
-/trades   — Open positions with PnL
-/ml       — ML model status
-/btc      — BTC analysis
-/stats    — All time statistics
-/mode     — Switch paper/live (TOTP secured)
-```
-
-### Content Pipeline
-- Auto-generates Twitter posts for every A+/A signal
-- Groq LLM writes professional/educational/humor posts
-- Telegram approval before posting
-- Engagement tracking
-
-### Security
-- Google OAuth authentication
-- TOTP (2FA) for mode switching and dangerous actions
-- Session management with device tracking
-- API key system for programmatic access
-- Rate limiting on all endpoints
-
----
-
-## Project Structure
+## 🏢 SaaS Tier System
 
 ```
-signal-engine-portfolio/
-├── backend/
-│   ├── main.py              # FastAPI app + WebSocket
-│   ├── config.py            # Configuration + SaaS tiers
-│   ├── database.py          # SQLAlchemy models
-│   ├── scheduler.py         # APScheduler jobs
-│   ├── auth.py              # JWT + TOTP + OAuth
-│   ├── engines/
-│   │   ├── indicators.py    # Technical indicators
-│   │   ├── capital.py       # Position sizing
-│   │   ├── validator.py     # Data validation
-│   │   └── PROPRIETARY.md  # Core engine (on request)
-│   ├── ml/
-│   │   └── PROPRIETARY.md  # ML pipeline (on request)
-│   ├── alerts/
-│   │   ├── telegram.py      # Telegram bot
-│   │   └── PROPRIETARY.md  # Scanner (on request)
-│   ├── trade/
-│   │   ├── exchange.py      # Binance integration
-│   │   ├── monitor.py       # Position monitoring
-│   │   └── executor.py      # Order execution
-│   └── data/
-│       ├── fetcher.py       # Market data
-│       └── store.py         # Candle storage
-└── frontend/
-    └── src/
-        ├── pages/           # 11 dashboard pages
-        ├── components/      # Reusable UI components
-        ├── stores/          # Zustand state
-        └── types/           # TypeScript definitions
+┌──────────┬──────────┬──────────┬──────────┐
+│   FREE   │   PRO    │  ELITE   │  ADMIN   │
+├──────────┼──────────┼──────────┼──────────┤
+│ 30m delay│  Live    │  Live    │  Live    │
+│ 3/day    │Unlimited │Unlimited │Unlimited │
+│ Grade ✅ │ Grade ✅ │ Grade ✅ │ Grade ✅ │
+│ Levels ❌│ Levels ✅│ Levels ✅│ Levels ✅│
+│ ML ❌    │ ML ❌    │ ML ✅    │ ML ✅    │
+│ Factors❌│Factors ❌│Factors ✅│Factors ✅│
+│ RAG ❌   │ RAG ❌   │ RAG ✅   │ RAG ✅   │
+│ API ❌   │ API ❌   │ API ✅   │ API ✅   │
+│ 5 coins  │All coins │All coins │All coins │
+└──────────┴──────────┴──────────┴──────────┘
 ```
 
 ---
 
-## Proprietary Components
+## 🔒 Security
 
-The following components contain the core trading intelligence
-and are available for review during technical interviews:
-
-- `engines/confluence.py` — 16-factor scoring engine
-- `engines/signal.py` — Signal generation + grading
-- `engines/sweep.py` — Liquidity sweep detection
-- `engines/displacement.py` — Displacement detection
-- `engines/retest.py` — Retest zone confirmation
-- `ml/trainer.py` — LightGBM training pipeline
-- `ml/predictor.py` — Win probability prediction
-- `alerts/scanner.py` — Core scan orchestration
-
-**Contact for full code review:** vishalkool166@gmail.com
+- **Google OAuth** — Secure user authentication
+- **TOTP (2FA)** — Required for mode switching and dangerous actions
+- **JWT Sessions** — Secure session management with device tracking
+- **Rate Limiting** — All endpoints protected via slowapi
+- **API Keys** — Programmatic access with prefix tracking
+- **Audit Log** — Every action logged with IP and timestamp
+- **Circuit Breakers** — Portfolio drawdown protection at 5 levels
 
 ---
 
-## Built With Prompt Engineering
+## ⏱️ Scan Schedule
 
-This entire system was architected and built through
-**structured prompt engineering** over 2 months:
-
-- 50+ production Python files
-- 70+ React/TypeScript components
-- Full infrastructure setup
-- Live deployment on AWS
-
-This demonstrates the core skill of modern AI-augmented
-development — knowing WHAT to build, HOW to structure it,
-and directing AI to implement it correctly.
+| Job | Schedule | Description |
+|-----|----------|-------------|
+| Crypto scan | `:00/:15/:30/:45 UTC` | Full 37-coin universe |
+| RAG reindex | `Every 30 min` | Index new trades and signals |
+| Morning briefing | `08:00 UTC` | London open summary |
+| Evening briefing | `14:30 UTC` | NY open summary |
+| Indian ORB setup | `04:05 UTC (9:35 IST)` | Lock opening range |
+| Indian scan | `Every 5 min` | Check for ORB breakdown |
+| Indian close | `09:45 UTC (3:15 IST)` | Force close + daily summary |
 
 ---
 
-## Contact
+## 🚀 Built With AI-Augmented Development
+
+This entire system — 50+ Python files, React frontend, RAG pipeline, LangGraph agents, Indian market integration, full SaaS infrastructure — was **architected and built through structured prompt engineering** using Claude AI as a coding assistant.
+
+No traditional software engineering background.
+Every architectural decision, trading strategy, and system design was made independently.
+Claude was the tool. The thinking was mine.
+100% production deployed and running live.
+
+**What this demonstrates:**
+- Designing and deploying production AI systems end to end
+- Using LangChain, LangGraph, and LangSmith in a real working system
+- Making data-driven decisions based on live trading results
+- Building and iterating on ML pipelines with real feedback loops
+- Full stack deployment on AWS with Docker and Nginx
+
+---
+
+## 📞 Contact
+
+<div align="center">
 
 **Vishal Katike**
-vishalkool166@gmail.com
-+91 8978439995
-Hyderabad, India
 
-[Resume](https://github.com/vishalkool166/signal-engine-portfolio/blob/main/RESUME.md) |
-[Live Demo](https://signal-engine-v5.vishalkool.top) |
-[LinkedIn](https://www.linkedin.com/in/vishal-katike)
+[![Email](https://img.shields.io/badge/Email-vishalkool166@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:vishalkool166@gmail.com)
+[![Phone](https://img.shields.io/badge/Phone-+91_8978439995-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](tel:+918978439995)
+[![Live System](https://img.shields.io/badge/🔴_Live_System-signal--engine--v5.vishalkool.top-00ff88?style=for-the-badge)](https://signal-engine-v5.vishalkool.top)
+
+*Open to: AI Engineer · LangChain Developer · Agentic AI Engineer · Prompt Engineer*
+
+</div>
+
+---
+
+<div align="center">
+
+*Built with Python · FastAPI · Redis · LightGBM · LangChain · LangGraph · LangSmith · ChromaDB · React · TypeScript*
+
+⭐ Star this repo if you found it interesting!
+
+</div>

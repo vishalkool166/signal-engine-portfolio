@@ -1,128 +1,133 @@
 # VISHAL KATIKE
+**AI Engineer · LangChain · LangGraph · LangSmith · RAG · LLM Systems**
 
-**AI Systems Builder | Prompt Engineer | Trust & Safety Analyst**
-
-Hyderabad, Telangana, India | vishalkool166@gmail.com | +91 8978439995
-
-<a href="https://signal-engine-v5.vishalkool.top" 
-   target="_blank" 
-   style="text-decoration: underline; color: blue;">
-   Signal Engine v5
-</a>
+Hyderabad, India · vishalkool166@gmail.com · +91 8978439995
+[Signal Engine v5](https://signal-engine-v5.vishalkool.top) · [GitHub](https://github.com/vishalkool166/signal-engine-portfolio) · [LinkedIn](https://linkedin.com/in/vishal-katike)
 
 ---
 
-## Professional Summary
+## Summary
 
-AI-augmented builder and Trust & Safety professional with 3+ years at Amazon, combining deep content moderation expertise with hands-on AI system development. Built and deployed **Signal Engine v5** - a production-grade autonomous AI trading intelligence platform - from architecture to live deployment using advanced prompt engineering and AI-directed development over 2 months. Experienced in LLM integration, ML model training, real-time data pipelines, and multi-tier SaaS architecture. Proven ability to translate complex AI concepts into working systems without traditional software engineering background - demonstrating the core skill of modern prompt engineering.
+AI Engineer with 4 years at Amazon who independently designed, built, and deployed **Signal Engine v5** — a production AI trading platform running 24/7 on AWS. The system combines a LangGraph stateful agent pipeline, RAG intelligence layer using LangChain and ChromaDB, LangSmith observability, and LightGBM ML gate across two markets — Binance Futures and Indian equity (BANKNIFTY/FINNIFTY via AngelOne). Built entirely through structured prompt engineering using Claude AI as a coding assistant. Every architectural decision, trading strategy, and system design was made independently.
+
+Currently contributing to AI model training and large-scale data analysis at Amazon, with hands-on experience structuring datasets for LLM pipelines and building QuickSight dashboards that drove $2.6M in annual cost reduction.
 
 ---
 
 ## Core Skills
 
-**AI & Prompt Engineering:** LLM Orchestration (Groq/llama-3.3-70b), Prompt Design & Iteration, AI-Directed Development, LightGBM ML, Automated Content Generation
+**AI Engineering**
+LangChain · LangGraph · LangSmith · RAG Pipelines · ChromaDB · Vector Stores · Semantic Search · Prompt Engineering · Groq API · Llama 3.3-70b · LLM Orchestration · sentence-transformers · Agentic AI Systems
 
-**System Building:** FastAPI, Python, React, TypeScript, WebSocket, Redis, SQLite, Docker, AWS EC2, Nginx
+**Machine Learning**
+LightGBM · scikit-learn · Feature Engineering · Model Training · Win Probability Prediction · Walk-Forward Backtesting
 
-**Trust & Safety:** Copyright & IP Compliance, Content Moderation, Policy Enforcement, AI-Generated Content Detection
+**Backend**
+Python · FastAPI · Redis · SQLite · SQLAlchemy · Docker · AWS EC2 · Nginx · WebSockets · REST APIs · APScheduler
 
-**Data & Analytics:** SQL (Easy-Medium), Amazon QuickSight, Advanced Excel
+**Frontend**
+React 18 · TypeScript · TailwindCSS · Framer Motion · Vite · PWA · TanStack Query · Zustand · Recharts
 
-**Integrations:** Binance Futures API, Telegram Bot API, Twitter/X API, Google OAuth, REST APIs
+**Data**
+SQL · Amazon QuickSight · Pandas · NumPy · Root Cause Analysis · Large-scale Dataset Structuring
 
-**Tools:** Salesforce CRM, Paragon, FinOps, GRASS, Git
+**Security and Auth**
+Google OAuth · JWT Sessions · TOTP 2FA · Rate Limiting · Audit Logging · Multi-tier SaaS
 
 ---
 
 ## Featured Project
 
-### Signal Engine v5 — AI-Powered Crypto Trading Intelligence System
-**Live Production System** | <a href="https://signal-engine-v5.vishalkool.top" 
-   target="_blank" 
-   style="text-decoration: underline; color: blue;">
-   Signal Engine v5
-</a> | *Built over 2 months using AI-directed development*
+### [Signal Engine v5](https://signal-engine-v5.vishalkool.top) — Production AI Trading Intelligence Platform
+*Python · FastAPI · LangChain · LangGraph · LangSmith · ChromaDB · sentence-transformers · LightGBM · React · TypeScript · Redis · Docker · AWS EC2 · AngelOne API*
 
-Architected and deployed a fully autonomous crypto futures trading intelligence platform from scratch using advanced prompt engineering — directing AI to generate 50+ production files across backend, frontend, and infrastructure.
+**What it is:**
+A fully autonomous trading intelligence platform running 24/7 on AWS EC2 t3.small. Covers two markets — Binance Futures (37 coins, every 15 minutes) and Indian equity futures (BANKNIFTY/FINNIFTY via AngelOne). Every component from signal detection to execution to observability was built and deployed independently.
 
-**What it does:**
-- Scans 15+ crypto coins every 15 minutes across 4 timeframes using ICT market structure concepts
-- Scores each coin using **16 weighted confluence factors** (liquidity sweeps, displacement, market regime, BTC alignment, ML gate) producing a signal grade of A+/A/B/C/F
-- **LightGBM ML model** trains on closed trade history, predicts win probability, and filters low-confidence signals below 65% threshold
-- Executes trades autonomously on **Binance Futures** with structure-aware stop loss and take profit placement
-- Generates AI-written Twitter content via **Groq LLM** for every A+/A signal with Telegram approval workflow
-- Real-time dashboard with **WebSocket** push updates, multi-tier **SaaS** (Free/Pro/Elite/Admin), Google OAuth
+**LangGraph Agent Pipeline**
+- Converted signal analysis into a stateful LangGraph agent graph with nodes for regime detection, trend direction, risk calculation, confluence scoring, position sizing, and finalization
+- Every node decision is logged and traceable — rejection reasons visible per coin per scan
+- Observable end-to-end through LangSmith at smith.langchain.com
 
-**Tech Stack:** Python · FastAPI · React · TypeScript · Redis · SQLite · LightGBM · Docker · AWS EC2 · Nginx · Binance API · Telegram Bot · Groq LLM · Google OAuth · TailwindCSS · Framer Motion
+**RAG Intelligence Layer**
+- Built a production RAG pipeline using LangChain and ChromaDB — 5 collection types covering trades, signals, daily summaries, coin performance, and documentation
+- Local CPU embeddings using sentence-transformers — zero cost, data stays on server
+- Semantic search across full trade history — answers grounded in actual trading data with source attribution
+- Re-indexed every 30 minutes via APScheduler
 
-**Key Achievements:**
-- Deployed live on AWS EC2 with SSL, Docker Compose, auto-deploy pipeline
-- Built complete SaaS tier system with feature gating, session management, API key access
-- Integrated 10+ external APIs into a single coherent system
-- Entire system built through structured prompt engineering — zero traditional coding background
+**LangSmith Observability**
+- Integrated LangSmith tracing across all LangChain and LangGraph operations
+- Every RAG query, agent execution, and LLM call observable with latency, token usage, and errors
 
----
+**Signal Scoring and Iteration**
+- Built and deployed ADX + RSI + Volume confluence scoring engine
+- Ran live on Binance Futures — identified through real trade data that Grade B signals had 13% win rate vs Grade A at 50% win rate
+- Made data-driven decision to remove B grades — demonstrates real feedback loop between system and live results
 
-## Professional Experience
+**LightGBM ML Gate**
+- Designed feature engineering pipeline from live trade data
+- LightGBM classifier trained on closed trades to predict win probability
+- Auto-retrains when 25 new trades accumulate — fully automated pipeline
 
-### Amazon | Hyderabad, Telangana, India
+**Indian Market ORB Strategy**
+- Built a completely separate Opening Range Breakout strategy for BANKNIFTY and FINNIFTY
+- AngelOne SmartAPI integration for live data and session management
+- Validates ORB size (200–350 pts), pre-session volatility, and week-of-month filter before entry
+- SHORT entries on breakdown below ORB Low between 11am–12pm IST
+- Telegram alerts on signal, outcome, and daily summary with rupee PnL per lot
 
-### Catalog Specialist | *May 2024 – Present*
-- Reviewed and analyzed **300+ ASINs daily** for content quality, policy compliance, and return-related defect patterns
-- Conducted **root cause analysis on 500K+ return records**, identifying damaged/defective products (65%), compatibility issues (18%), and quality concerns (12%) through structured L1-L4 topic hierarchy
-- Prepared and structured customer behavior data for **AI model training**, contributing to improved content moderation and return prediction accuracy
-- Supported content optimization initiatives preventing **16,500+ product returns quarterly**
-- Coordinated cross-functional stakeholder reviews contributing to **$2.6M annual cost reduction**
-- Built QuickSight dashboards enabling self-service analytics for compliance and quality decision-making
-
----
-
-### KDP Sr. Analyst | *February 2023 – May 2024*
-- **Reviewed and moderated 8,000+ KDP submissions** for copyright violations, AI-generated content policy breaches, and intellectual property infringement — directly relevant to modern AI content governance
-- **Identified that 60%+ of content rejections were image copyright-related**, driving data-backed recommendation for licensed image vendor partnerships
-- Worked on **LLM model training for suspicious account termination** — contributing labeled data and pattern analysis to fraud detection AI pipeline
-- Assessed risk and compliance for copyright, IP, and public domain violations using legal compliance frameworks
-- Generated SQL queries to extract compliance data and produce stakeholder-ready reports
-- **Cleared compliance backlog within 4 weeks** through structured pilot project managing 4-person specialized team
-- Resolved publisher payment discrepancies in coordination with FinOps team
+**Infrastructure and SaaS**
+- Full stack deployed on AWS EC2 with Docker Compose, Nginx, SSL, and auto-deploy pipeline
+- Multi-tier SaaS (Free/Pro/Elite/Admin) with Google OAuth, JWT sessions, TOTP 2FA, and API key access
+- Telegram bot with 30+ commands for remote monitoring and control
+- WebSocket push to dashboard every 2 seconds
+- Portfolio circuit breakers at 5 drawdown levels
 
 ---
 
-### Sr. Seller Support Associate | *March 2022 – September 2022*
-- Investigated and resolved complex seller account, order, and payment escalations with **95%+ first-contact resolution rate**
-- Used internal investigation tools (Paragon, FinOps, GRASS) to conduct fraud and policy violation inquiries
-- Delivered high-quality written and verbal communication in all seller interactions and internal documentation
+## Experience
+
+### Amazon — Hyderabad
+
+**Catalog Specialist and AI Data Analyst** · May 2025 – Present
+- Analyzed 300+ ASINs daily and performed root cause analysis on 500,000+ return records identifying key defect patterns
+- Structured large-scale datasets for AI model training contributing to improved content moderation accuracy
+- Built QuickSight dashboards contributing to $2.6M annual cost reduction
+- Collaborated with cross-functional teams to deliver data-driven insights at scale
+
+**KDP Senior Analyst** · February 2023 – May 2025
+- Moderated 8,000+ KDP submissions for AI-generated content violations and copyright infringement
+- Contributed labeled data and pattern analysis to an LLM-based fraud detection pipeline
+- Led a 4-person team clearing a major compliance backlog within 4 weeks
+- Developed internal documentation and training material for new analysts
+
+**Senior Seller Support Associate** · March 2022 – September 2022
+- Resolved complex seller escalations with 95%+ first-contact resolution rate
+- Handled high-priority cases requiring cross-team coordination and policy interpretation
 
 ---
 
-### Keolis Hyderabad MRTS | Train Operator | *December 2018 – November 2021*
-- Ensured strict compliance with safety SOPs in high-accountability operational environment
-- Coordinated with vendors, stakeholders, and emergency services for incident response
+### Keolis Hyderabad MRTS — Train Operator · December 2018 – November 2021
+- Operated metro rail services maintaining strict compliance with safety SOPs
 - Trained and supervised new recruits on operational procedures and safety protocols
 
 ---
 
 ## Education
 
-**Bachelor of Technology (B.Tech) — Mechanical Engineering**
-Vidya Jyoti Institute of Technology | 2014 – 2018 | Hyderabad
+**B.Tech — Mechanical Engineering**
+Vidya Jyoti Institute of Technology · 2014 – 2018
 
 ---
 
-## Key Achievements
+## How I Build
 
-- **Built Signal Engine v5** — production AI system running live on AWS, built entirely through prompt engineering over 2 months
-- **Reviewed 8,000+ KDP submissions** for AI-generated content and copyright violations
-- **Contributed to LLM training pipeline** for fraud/suspicious account detection at Amazon
-- **Identified 60%+ image copyright violation pattern** through structured root cause analysis
-- **Cleared compliance backlog in 4 weeks** through efficient resource coordination
-- **$2.6M annual cost reduction** contribution through data-driven compliance strategies
-- **95%+ first-contact resolution rate** in high-volume escalation handling
+Signal Engine v5 was built file by file using Claude AI as a coding assistant. I do not come from a traditional software engineering background. Every architectural decision — the LangGraph node design, the RAG chunking strategy, the ORB entry logic, the SaaS tier system, the Binance execution pipeline — was made by me. Claude was the tool. The thinking, the strategy, and the iteration based on live results were entirely mine.
+
+This is how I believe AI engineers should work in 2025 — using AI as a force multiplier to build systems that would otherwise require a team.
 
 ---
 
-## What Makes This Profile Unique
+## Open To
 
-> *"I don't just use AI tools — I direct AI to build production systems. Signal Engine v5 is proof: a live, deployed, revenue-ready SaaS platform built through 2 months of structured prompt engineering, problem-solving, and system thinking — without traditional coding background."*
-
----
+AI Engineer · RAG Engineer · LangChain Developer · Agentic AI Engineer · AI Product Engineer · Prompt Engineer
